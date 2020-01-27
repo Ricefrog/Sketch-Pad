@@ -1,0 +1,15 @@
+.board-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.grid {
+    background-color: #f9f9f9;
+}
