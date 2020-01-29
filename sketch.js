@@ -13,7 +13,7 @@ function init(num) {
         grid.addEventListener("mouseover", function(){
             let styles = window.getComputedStyle(grid);
             grid.style.backgroundColor = color(styles.getPropertyValue("background-color"));
-            //console.log("testing!");
+            
         });
         board.appendChild(grid);
     };
@@ -21,7 +21,6 @@ function init(num) {
 
 //function for soft-resetting the board
 function softReset() {
-    const board = document.querySelector(".board-container");
     const gridArr = document.querySelectorAll(".grid");
 
     gridArr.forEach(function(e) {
@@ -32,7 +31,7 @@ function softReset() {
 //function to choose a random color at first, then progressively make the grid-item darker
 function color(currentColor) {
     
-    console.log(currentColor);
+    //console.log(currentColor);
     if (currentColor == "rgb(249, 249, 249)") {
         let r = Math.random() * 255;
         let g = Math.random() * 255;
@@ -68,4 +67,53 @@ function rgbGet(currentColor) {
     let b = str.slice(0, str.indexOf(')'));
     
     return [r, g, b];
+};
+
+//addEventListener for settings button
+const settingsButton = document.querySelector("i");
+settingsButton.addEventListener("click", setOpen);
+//function to open settings window
+function setOpen() {
+    const setMenu = document.createElement("div");
+    const exit = document.createElement("i");
+    const gridForm = document.createElement("form");
+    const range = document.createElement("input");
+    const rangeLabel = document.createElement("label");
+
+    rangeLabel.textContent = "Grid Size: ";
+    rangeLabel.setAttribute("for", "gridSize");
+    range.setAttribute("type", "range");
+    range.setAttribute("min", "16");
+    range.setAttribute("max", "50");
+    range.value = "16";
+    range.setAttribute("id", "gridSize");
+    range.addEventListener("input", () => changeGrid(range.value));
+
+    gridForm.appendChild(rangeLabel);
+    gridForm.appendChild(range);
+    gridForm.classList.add("gridForm");
+
+    exit.classList.add("fa-times-circle");
+    exit.classList.add("fas");
+    exit.addEventListener("click", () => setClose(setMenu));
+   
+    setMenu.classList.add("settings");
+    document.querySelector("body").insertBefore(setMenu, document.querySelector("div"));
+
+    setMenu.appendChild(gridForm);
+    setMenu.appendChild(exit);
+};
+
+//function to change grid size
+function changeGrid(num) {
+    let gridArr = document.querySelectorAll(".grid");
+    gridArr.forEach(function(e) {
+        document.querySelector(".board-container").removeChild(e);
+    });
+    init(num);
+};
+
+//function to close the settings window
+function setClose(setMenu) {
+    document.querySelector("body").removeChild(setMenu);
 };

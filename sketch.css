@@ -15,6 +15,7 @@ body {
 
 .grid {
     background-color: #f9f9f9;
+    
 }
 
 .nav {
@@ -30,7 +31,7 @@ body {
     text-align: center;
     color: pink;
     font-size: 2em;
-    
+    text-shadow: 2px 2px #ff0000;
 }
 
 i {
@@ -51,4 +52,29 @@ i:hover {
 .fa-eraser {
     float: right;
     margin-right: .5%;
+}
+
+.settings {
+    position: absolute;
+    z-index: 3;
+    margin: 25.5%;
+    margin-top: 15%;
+    background-image: linear-gradient(#2c3e50, #3498db);
+    height: 45%;
+    width: 45%;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.45);
+}
+
+.fa-times-circle {
+    float: right;
+    margin-right: .5%;
+    color: pink;
+    font-size: 2em;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.gridForm input {
+
 }
