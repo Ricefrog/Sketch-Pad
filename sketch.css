@@ -86,7 +86,8 @@ i:hover {
 }
 
 .gridForm {
-    margin-top: 5%;
+    margin-top: 15%;
+    margin-left: 6%;
     color: #ffca5e;
     text-shadow: 2px 2px #ff0000;
 }
@@ -145,7 +146,16 @@ input[type=range]::-moz-focus-outer {
       margin-left: 3%;
   }
 
+  input[type="color"]:disabled {
+    color: #d5dbdb;;
+    background-color: #f4f6f6;
+    border-color: #d5dbdb;
+    opacity: 0.3;
+  }
 
+  .colorSpan {
+      margin-top: 5%;
+  }
 
 
   

@@ -1,6 +1,6 @@
 let dimensions = 16;
 let shading = true;
-let gridColor = "rand";
+let gridColor = "#941e00";
 let randomColors = true;
 init(dimensions);
 dimensionDisplay(16);
@@ -52,13 +52,17 @@ function softReset() {
 function color(currentColor) {
     
     //console.log(currentColor);
-    if (currentColor == "rgb(249, 249, 249)") {
+    if (currentColor == "rgb(249, 249, 249)" && randomColors === true) {
         let r = Math.random() * 255;
         let g = Math.random() * 255;
         let b = Math.random() * 255;
         
         return `rgb(${r}, ${g}, ${b})`;
-    } else if(shading === true) { //darken the shade
+    } else if (currentColor == "rgb(249, 249, 249)") { 
+
+        return gridColor;
+
+    } else if (shading === true) { //darken the shade
         let shade = 0.8;
         let rgb = rgbGet(currentColor);
         let r = rgb[0];
@@ -174,20 +178,22 @@ function colorPick() {
     const inputCol = document.createElement("input");
     const label_1 = document.createElement("label");
     const label_2 = document.createElement("label");
-
+    container.style.display = "block";
+    container.classList.add("colorSpan");
     
 
-    label_2.textContent = "Color: ";
+    label_2.textContent = "||  Color ";
     label_2.setAttribute("for", "colPick");
     inputCol.setAttribute("id", "colPick");
     inputCol.setAttribute("type", "color");
+    inputCol.value = gridColor;
 
     inputCol.addEventListener("input", () => {
         gridColor = inputCol.value;
     });
 
 
-    label_1.textContent = "Color Mode: Random";
+    label_1.textContent = "Sketch Color: Random";
     label_1.setAttribute("for", "randCheck");
     inputRand.setAttribute("id", "randCheck");
     inputRand.setAttribute("type", "checkbox");
@@ -196,7 +202,7 @@ function colorPick() {
 
     inputRand.addEventListener("change", () => {
         randomColors = randomColors === false ? true : false;
-        inputCol.disabled = inputCol === false ? true : false;
+        inputCol.disabled = inputCol.disabled === false ? true : false;
     });
 
     container.appendChild(label_1);
