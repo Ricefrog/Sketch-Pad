@@ -128,11 +128,12 @@ input[type=range]::-moz-focus-outer {
 }
 
 .gridForm input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none; 
-    appearance: none;
+    -webkit-appearance: sliderthumb-horizontal; 
+    appearance: sliderthumb-horizontal;
     box-shadow: 1.8px 1.8px 5.9px rgba(255, 0, 0, 0.49), 0px 0px 1.8px rgba(255, 26, 26, 0.49);
     border: 2.9px solid #941e00;
     background: rgba(255, 55, 56, 0.93);
+    height: 100%;
     cursor: pointer; 
   }
 
