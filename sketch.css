@@ -35,6 +35,16 @@ body {
     position: absolute;
 }
 
+.tog_1 {
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+.tog_2 {
+    color: #69fab4;
+    text-shadow: none;
+}
+
 .brand {
     position: absolute;
     width: 30%;

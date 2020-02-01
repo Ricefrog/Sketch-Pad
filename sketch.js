@@ -2,8 +2,10 @@ let dimensions = 16;
 let shading = true;
 let gridColor = "#941e00";
 let randomColors = true;
+let hoverToggle = true;
 init(dimensions);
 dimensionDisplay(16);
+toggleSpan();
 
 //function to initialize the board
 function init(num) {
@@ -51,7 +53,9 @@ function softReset() {
 //function to choose a random color at first, then progressively make the grid-item darker
 function color(currentColor) {
     
-    //console.log(currentColor);
+    if (!hoverToggle) {
+        return currentColor;
+    }
     if (currentColor == "rgb(249, 249, 249)" && randomColors === true) {
         let r = Math.random() * 255;
         let g = Math.random() * 255;
@@ -211,4 +215,30 @@ function colorPick() {
     container.appendChild(inputCol);
     return container;
 };
+
+//function to create toggle info 
+function toggleSpan() {
+    const nav = document.querySelector(".nav");
+    const span = document.createElement("span");
+    const innerSpan = document.createElement("span");
+
+    innerSpan.classList.add("tog_2");
+    innerSpan.textContent = " ON";
+    document.querySelector("body").addEventListener("keypress", (e) => {
+        console.log("Keycode: "+e.keyCode);
+        if (e.keyCode == 106) {
+            console.log("J was pressed");
+            innerSpan.textContent = hoverToggle === true ? " OFF" : " ON";
+            innerSpan.style.color = hoverToggle === true ? "#ff30a9" : "#69fab4" ;
+            hoverToggle = hoverToggle === true ? false : true;
+        }
+    });
+    
+    span.textContent = "Sketch on Hover: (J to toggle)";
+    span.appendChild(innerSpan);
+    span.classList.add("tog_1");
+    span.style.fontSize = ".5em";
+    span.style.float = "left";
+    nav.insertBefore(span, document.querySelector("span"));
+}
 
